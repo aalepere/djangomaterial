@@ -1,0 +1,9 @@
+{% if list_input %}
+    <ul>
+    {% for i in list_input %}
+        <li>{{i.input1}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No inputs are available.</p>
+{% endif %}
