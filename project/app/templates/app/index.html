@@ -28,8 +28,13 @@
             </div>
          </header>
          <main class="mdl-layout__content">
-             <div>
-                 <form action="#">
+             <div class="demo-card-wide mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text">User details</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                Please enter first and last name.
+                <form method="POST">
                     {% csrf_token %}  
                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                         <input class="mdl-textfield__input" type="text" name= "{{ form.first_name.html_name }}" required id="{{ form.first_name.id_for_label }}">
@@ -39,9 +44,13 @@
                         <input class="mdl-textfield__input" type="text" name= "{{ form.last_name.html_name }}" required id="{{ form.last_name.id_for_label }}">
                         <label class="mdl-textfield__label" for="{{ form.last_name.id_for_label }}">Last Name</label>
                     </div>
+                    <div id="submit-button">
                     <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" name="Submit">Submit</button>
+                    </div>
                 </form>
+                </div>
             </div>
          </main>
+      </div>
    </body>
 </html>
