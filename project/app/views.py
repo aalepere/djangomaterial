@@ -1,8 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from .models import Test
+from django.http import HttpResponseRedirect
+
+from .forms import PersonForm
 
 def index(request):
-    list_input = Test.objects.all()
-    context = {'list_input':list_input}
-    return render(request, 'app/index.html', context)
+    if request.method == 'POST':
+        form = PersonForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = PersonForm()
+    return render(request, 'app/index.html', {'form':form})

@@ -1,9 +1,47 @@
-{% if list_input %}
-    <ul>
-    {% for i in list_input %}
-        <li>{{i.input1}}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No inputs are available.</p>
-{% endif %}
+<html>
+   <head>
+      <link rel = "stylesheet" 
+         href = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
+      <script src = "https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js">
+      </script>
+      <link rel = "stylesheet" 
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+   </head>
+   
+   <body>
+      <!-- The drawer is always open in large screens. The header is always 
+         shown, even in small screens. -->
+      <div class = "mdl-layout mdl-js-layout mdl-layout--fixed-header">
+         <header class = "mdl-layout__header">
+            <div class = "mdl-layout__header-row">
+               <!-- Title -->
+               <span class = "mdl-layout-title">Django App</span>
+               <!-- Add spacer, to align navigation to the right -->
+               <div class = "mdl-layout-spacer"></div>
+               <!-- Navigation -->
+               <nav class = "mdl-navigation">
+                  <a class = "mdl-navigation__link" href = "" 
+                     style = "color:white">Home</a>
+                  <a class = "mdl-navigation__link" href = "" 
+                     style = "color:white">About</a>
+               </nav>
+            </div>
+         </header>
+         <main class="mdl-layout__content">
+             <div>
+                 <form action="#">
+                    {% csrf_token %}  
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name= "{{ form.first_name.html_name }}" required id="{{ form.first_name.id_for_label }}">
+                        <label class="mdl-textfield__label" for="{{ form.first_name.id_for_label }}">First Name</label>
+                    </div>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                        <input class="mdl-textfield__input" type="text" name= "{{ form.last_name.html_name }}" required id="{{ form.last_name.id_for_label }}">
+                        <label class="mdl-textfield__label" for="{{ form.last_name.id_for_label }}">Last Name</label>
+                    </div>
+                    <button class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" type="submit" name="Submit">Submit</button>
+                </form>
+            </div>
+         </main>
+   </body>
+</html>
